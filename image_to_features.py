@@ -18,13 +18,14 @@ from lib.utils import *
 parser = argparse.ArgumentParser()
 parser.add_argument('-in', dest="INPUT_FILES", default="images/photographic_thumbnails/*.jpg", help="Input file pattern")
 parser.add_argument('-size', dest="IMAGE_SIZE", default="224x224", help="Resize images to this size")
-parser.add_argument('-pca', dest="PCA_COMPONENTS", default=256, type=int, help="Principal component analysis (PCA) components to reduce down to")
+parser.add_argument('-pca', dest="PCA_COMPONENTS", default=128, type=int, help="Principal component analysis (PCA) components to reduce down to")
 parser.add_argument('-out', dest="OUTPUT_FILE", default="output/photographic_features.p.bz2", help="Pickle cache file to store features")
 a = parser.parse_args()
 
 os.environ["KERAS_BACKEND"] = "plaidml.keras.backend"
 import keras
-from keras.preprocessing import image
+import keras.utils as image
+
 from keras.applications.imagenet_utils import preprocess_input
 from keras.models import Model
 

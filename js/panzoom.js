@@ -4,23 +4,22 @@ var PanZoom = (function() {
 
   var viewer, tracker, opt;
   var imageW, imageH, cellW, cellH, ncellW, ncellH;
-  var filterCtx, filterImData, filterData, minYear, maxYear;
+  var filterCtx, filterImData, filterData, minChallenge, maxChallenge;
   var filterTexture, filterSprite, spriteW, spriteH;
-  var yearFilterResults, subjectFilterResults;
+  var challengeFilterResults, subjectFilterResults;
   var lastWebPoint, isAnimating, animateTimeout, isTouch;
   var metadata, currentDataIndex;
   var $highlight, $title, $metadata, $metadataContent, $debug;
   var $overlay, pixiApp;
-
   function PanZoom(config) {
     var defaults = {
-      tileSources: "img/photographic_matrix.dzi",
+      tileSources: "img/monsters_matrix.dzi",
       prefixUrl: "img/openseadragon/",
       debug: false,
-      cols: 114,
-      rows: 116,
+      cols: 16,
+      rows: 18,
       highlightDelay: 10,
-      defaultZoomLevel: 3
+      defaultZoomLevel: 0
     };
     opt = $.extend({}, defaults, config);
     this.init();
@@ -52,10 +51,16 @@ var PanZoom = (function() {
         prefixUrl: opt.prefixUrl,
         tileSources: opt.tileSources,
         homeFillsViewer: true,
+        defaultZoomLevel: opt.defaultZoomLevel,
+        minZoomLevel: 	-1,
+        maxZoomLevel: 	3,
+        //showNavigator:  true,
+        //navigatorPosition:   "BOTTOM_LEFT",
+        //navigatorAutoFade:  true,
         // animationTime: 0
     });
 
-    yearFilterResults = new Array(opt.rows * opt.cols).fill(1);
+    challengeFilterResults = new Array(opt.rows * opt.cols).fill(1);
     subjectFilterResults = new Array(opt.rows * opt.cols).fill(1);
     isTouch = isTouchDevice();
 
@@ -126,14 +131,12 @@ var PanZoom = (function() {
       });
     });
 
-    $(document).on("domain.update", function(e, yearStart, yearEnd) {
-      // console.log(yearStart, yearEnd);
-      _this.onUpdateDomain(yearStart, yearEnd);
+    $(document).on("domain.update", function(e, challengeStart, challengeEnd) {
+      _this.onUpdateDomain(challengeStart, challengeEnd);
     });
 
-    $(document).on("subject.select", function(e, index) {
-      // console.log(index);
-      _this.onSelectSubject(index);
+    $(document).on("subject.select", function(e, subjectIndices) {
+      _this.onSelectSubject(subjectIndices);
     });
   };
 
@@ -187,15 +190,15 @@ var PanZoom = (function() {
     this.onMouseMove();
   };
 
-  PanZoom.prototype.onFilter = function(fdata){
+  PanZoom.prototype.onFilter = function(){
     if (filterData===undefined) return;
-    
+
     for (var row=0; row<opt.rows; row++) {
       for (var col=0; col<opt.cols; col++) {
         var i = row * opt.cols + col;
         var r=0, g=0, b=0, a=0;
-        if (yearFilterResults[i] < 1 || subjectFilterResults[i] < 1) {
-          a = 200;
+        if (challengeFilterResults[i] < 1 || subjectFilterResults[i] < 1) {
+          a = 165;
         }
         filterData[i*4] = r;
         filterData[i*4+1] = g;
@@ -224,15 +227,17 @@ var PanZoom = (function() {
     this.transformOverlay();
   };
 
-  PanZoom.prototype.onSelectSubject = function(subjectIndex){
+  PanZoom.prototype.onSelectSubject = function(subjectIndices){
     subjectFilterResults = new Array(opt.rows * opt.cols).fill(1);
 
-    if (subjectIndex !== undefined && subjectIndex >= 0) {
-      for (var i=0; i<metadata.subjects.length; i++) {
+    if (subjectIndices !== undefined && !subjectIndices.has(-1)) {
+      const indicesArr = Array.from(subjectIndices);
+      for (var i=0; i< metadata.subjects.length; i++) {
         var subjects = metadata.subjects[i];
         var result = 0;
         var slen = subjects.length;
-        if (slen > 0 && subjects.indexOf(subjectIndex) >= 0) result = 1;
+
+        if (slen > 0 && containsAny(subjects, indicesArr)) result = 1;
         subjectFilterResults[i] = result;
       }
     }
@@ -240,21 +245,28 @@ var PanZoom = (function() {
     this.onFilter();
   };
 
-  PanZoom.prototype.onUpdateDomain = function(yearStart, yearEnd) {
-    yearFilterResults = new Array(opt.rows * opt.cols).fill(1);
-
-    // only filter if total domain was changed
-    if (yearStart > minYear || yearEnd < maxYear) {
-
-      for (var i=0; i<metadata.years.length; i++) {
-        var years = metadata.years[i];
-        var result = 0;
-        var ylen = years.length;
-        if (ylen > 0 && years[0] >= yearStart && years[ylen-1] <= yearEnd) result = 1;
-        yearFilterResults[i] = result;
+  function containsAny(arr1, arr2) {
+    for (let i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) !== -1) {
+        return true;
       }
     }
+    return false;
+  }
 
+  PanZoom.prototype.onUpdateDomain = function(challengeStart, challengeEnd) {
+    challengeFilterResults = new Array(opt.rows * opt.cols).fill(1);
+    // only filter if total domain was changed
+    if (challengeStart > minChallenge || challengeEnd < maxChallenge) {
+
+      for (var i=0; i < metadata.challenge.length; i++) {
+        var challenge = metadata.challenge[i];
+        var result = 0;
+        if (challenge >= challengeStart && challenge <= challengeEnd) result = 1;
+        challengeFilterResults[i] = result;
+      }
+    }
+    
     this.onFilter();
   };
 
@@ -332,7 +344,7 @@ var PanZoom = (function() {
 
   PanZoom.prototype.renderMetadata = function(dataIndex){
     if (metadata===undefined) return;
-
+    
     dataIndex = dataIndex || currentDataIndex;
     var id = metadata.ids[dataIndex];
 
@@ -343,15 +355,18 @@ var PanZoom = (function() {
     }
 
     var title = metadata.titles[dataIndex];
-    var yearStr = metadata.yearStrings[dataIndex];
+    var challengeStr = metadata.challengeStrings[dataIndex];
     var filename = metadata.filenames[dataIndex];
     var url = metadata.itemBaseUrl + id;
-    var imageUrl = metadata.imageBaseUrl + filename;
+    var detailsUrl = metadata.itemBaseUrl + filename;
 
-    var html = '<h2>' + title + '</h2>';
-    if (yearStr.length > 0) html += '<h3>' + yearStr + '</h3>';
-    html += '<div class="metadata-image" style="background-image: url('+imageUrl+');"></div>';
-    html += '<a href="'+url+'" class="button" target="_blank">View on full record</a>';
+    var html = '';//'<h2>' + title + '</h2>';
+    //if (challengeStr.length > 0) html += '<h3>' + challengeStr + '</h3>';
+
+    html +=  "<iframe scrolling='no' src='" + url +"' scrolling='yes' style='border: 0px none;  height: 500px; width: 500px;'></iframe>"
+
+    //html += '<div class="metadata-image" style="background-image: url('+imageUrl+');"></div>';
+    html += '<div><a href="'+url+'" class="button" target="_blank">View on full record</a></div>';
     $metadataContent.html(html)
     $metadata.addClass('active');
   };
@@ -368,8 +383,12 @@ var PanZoom = (function() {
       return;
     }
 
-    var yearStr = metadata.yearStrings[dataIndex];
-    if (yearStr.length > 0 && !title.endsWith(yearStr)) title += ' (' + yearStr + ')';
+    var challengeStr = metadata.challengeStrings[dataIndex];
+    title += ' (' + challengeStr + ' - ';
+    const subjectIndex = metadata.subjects[dataIndex];
+    const subject = metadata.subjectMeta[subjectIndex][0]
+    
+    title += '' + subject + ')';
 
     $title.text(title).addClass("active");
   };
@@ -377,9 +396,9 @@ var PanZoom = (function() {
   PanZoom.prototype.setMetadata = function(data){
     metadata = data;
 
-    var flatYearData = _.flatten(metadata.years, true);
-    minYear = _.min(flatYearData);
-    maxYear = _.max(flatYearData);
+    var flatChallengeData = _.flatten(metadata.challenge, true);
+    minChallenge = _.min(flatChallengeData);
+    maxChallenge = _.max(flatChallengeData);
   };
 
   PanZoom.prototype.transformOverlay = function(){

@@ -8,7 +8,8 @@ import os
 import numpy as np
 import pickle
 from pprint import pprint
-from MulticoreTSNE import MulticoreTSNE as TSNE
+from sklearn.manifold import TSNE
+# from MulticoreTSNE import MulticoreTSNE as TSNE
 import sys
 
 from lib.utils import *
@@ -17,8 +18,8 @@ from lib.utils import *
 parser = argparse.ArgumentParser()
 parser.add_argument('-in', dest="INPUT_FILE", default="output/photographic_features.p.bz2", help="Path to features file")
 parser.add_argument('-components', dest="COMPONENTS", default=2, type=int, help="Number of components (1, 2, or 3)")
-parser.add_argument('-rate', dest="LEARNING_RATE", default=150, type=int, help="Learning rate: increase if too dense, decrease if too uniform")
-parser.add_argument('-angle', dest="ANGLE", default=0.1, type=float, help="Angle: increase to make faster, decrease to make more accurate")
+parser.add_argument('-rate', dest="LEARNING_RATE", default=500, type=int, help="Learning rate: increase if too dense, decrease if too uniform")
+parser.add_argument('-angle', dest="ANGLE", default=0.01, type=float, help="Angle: increase to make faster, decrease to make more accurate")
 parser.add_argument('-jobs', dest="JOBS", default=4, type=int, help="Concurrent jobs to run")
 parser.add_argument('-out', dest="OUTPUT_FILE", default="data/photographic_tsne.csv", help="Output TSNE file")
 a = parser.parse_args()

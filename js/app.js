@@ -39,8 +39,9 @@ var App = (function() {
   var opt, metadata;
 
   function App(config) {
+    console.log("config", config)
     var defaults = {
-      metadataUrl: "data/photographic_images.json"
+      metadataUrl: "data/monsters_images.json"
     };
     opt = $.extend({}, defaults, config);
     this.init();
@@ -97,19 +98,17 @@ var App = (function() {
   };
 
   App.prototype.onDataLoad = function(results){
+    console.log(results)
     metadata = results;
-
     // parse years
-    metadata.yearStrings = _.map(metadata.years, function(yRange){
-      var yStr = "";
-      var count = yRange.length
-      if (count > 1) yStr = yRange[0]+"-"+yRange[1];
-      else if (count > 0) yStr = ""+yRange[0];
-      return yStr;
+    metadata.challengeStrings = _.map(metadata.challenge, function(cr){
+      return "CR-"+cr;
     });
 
+    console.log("onDataLoad", metadata)
+
     this.panzoom.setMetadata(metadata);
-    this.datePicker = new DatePicker({data: metadata.years});
+    this.datePicker = new DatePicker({challengeData: metadata.challenge, subjectsData: metadata.subjects});
     this.treeMap = new TreeMap({data: metadata.subjectMeta});
   };
 

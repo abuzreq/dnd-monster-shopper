@@ -28,7 +28,8 @@ tileCount = gridW * gridH
 filenames = glob.glob(a.IMAGE_FILES)
 filenames = sorted(filenames)
 fileCount = len(filenames)
-
+print(a)
+print(fileCount)
 if fileCount != len(grid):
     print("File count (%s) != grid count (%s)" % (fileCount, len(grid)))
     sys.exit()

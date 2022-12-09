@@ -255,7 +255,7 @@ a.toggle-link {
   display: none;
 }
 .treemap rect {
-  fill-opacity: 0.4;
+  fill-opacity: 0.35;
 }
 .treemap .node.inactive rect {
   fill-opacity: 0.2;
@@ -268,6 +268,7 @@ a.toggle-link {
 .treemap text {
   fill: white;
   font-size: 0.9rem;
+  user-select: none;
 }
 .treemap text tspan:last-child {
   font-size: 0.8rem;

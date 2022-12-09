@@ -48,7 +48,7 @@ subjectLabels = [s["subject"] for s in mainSubjects]
 
 print("Matching subjects...")
 for i, d in enumerate(data):
-    data[i]["years"] = [y for y in parseYears(d["date"]) if YEAR_RANGE[0] <= y <= YEAR_RANGE[1]]
+    data[i]["challenge"] = d["cr"]
     subjects = []
     for j, s in enumerate(mainSubjects):
         for item in s["items"]:
@@ -91,7 +91,7 @@ print("Image base URL: %s" % imageBaseUrl)
 ids = ["" for i in range(gridW*gridH)]
 filenames = ["" for i in range(gridW*gridH)]
 titles = ["" for i in range(gridW*gridH)]
-years = [[] for i in range(gridW*gridH)]
+challenge = [[] for i in range(gridW*gridH)]
 subjects = [[] for i in range(gridW*gridH)]
 
 for fileIndex, dataIndex in enumerate(matchedEntries):
@@ -101,7 +101,7 @@ for fileIndex, dataIndex in enumerate(matchedEntries):
     ids[gridIndex] = entry["url"].split("/")[-1]
     filenames[gridIndex] = entry["imageUrl"].split("/")[-1]
     titles[gridIndex] = entry["title"]
-    years[gridIndex] = entry["years"]
+    challenge[gridIndex] = entry["challenge"]
     subjects[gridIndex] = entry["subjects"]
 
 jsonData = {
@@ -110,7 +110,7 @@ jsonData = {
     "ids": ids,
     "filenames": filenames,
     "titles": titles,
-    "years": years,
+    "challenge": challenge,
     "subjects": subjects,
     "subjectMeta": [[s["subject"], s["count"]] for s in mainSubjects]
 }

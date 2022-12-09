@@ -1,0 +1,6 @@
+python image_to_features.py -in "images/monsters_thumbnails/*.jpg" -pca 128 -out "output/monsters_features.p.bz2" -size 512
+python features_to_tsne.py -in "output/monsters_features.p.bz2" -jobs 4 -out "data/monsters_tsne.csv"
+python tsne_to_grid.py -in "data/monsters_tsne.csv" -out "data/monsters_grid.csv"
+python grid_to_image.py -in "data/monsters_grid.csv" -tile "128x128" -grid "16x18" -out "output/monsters_matrix.jpg"  -im "images/monsters_thumbnails/*.jpg"
+python image_to_tiles.py -in "output/monsters_matrix.jpg" -tsize 128 -out "img/monsters_matrix.dzi"
+python csv_to_json.py -in "data/monsters_images.csv" -sub "data/monsters_subjects.csv" -image "images/monsters_thumbnails/*.jpg" -grid "data/monsters_grid.csv" -gsize "16x18" -out "data/monsters_images.json"

@@ -1,0 +1,9 @@
+{
+    "cols": 16,
+    "rows" : 18,
+    "tileSources" : "img/monsters_matrix.dzi",
+    "metadataUrl" :"data/monsters_images.json"
+}
+
+
+
