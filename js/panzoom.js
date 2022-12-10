@@ -1,7 +1,6 @@
-'use strict';
+"use strict";
 
-var PanZoom = (function() {
-
+var PanZoom = (function () {
   var viewer, tracker, opt;
   var imageW, imageH, cellW, cellH, ncellW, ncellH;
   var filterCtx, filterImData, filterData, minChallenge, maxChallenge;
@@ -11,6 +10,8 @@ var PanZoom = (function() {
   var metadata, currentDataIndex;
   var $highlight, $title, $metadata, $metadataContent, $debug;
   var $overlay, pixiApp;
+  var selectedMonstersIndices = [];
+  var $marker, $markerContent;
   function PanZoom(config) {
     var defaults = {
       tileSources: "img/monsters_matrix.dzi",
@@ -19,45 +20,48 @@ var PanZoom = (function() {
       cols: 16,
       rows: 18,
       highlightDelay: 10,
-      defaultZoomLevel: 0
+      defaultZoomLevel: 0,
     };
     opt = $.extend({}, defaults, config);
     this.init();
   }
 
-  function getViewportDetails(){
-    var webPoint = lastWebPoint || new OpenSeadragon.Point(0,0);
+  function getViewportDetails() {
+    var webPoint = lastWebPoint || new OpenSeadragon.Point(0, 0);
     var viewportPoint = viewer.viewport.pointFromPixel(webPoint);
     var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint);
-    var imageOffset = viewer.viewport.viewportToImageCoordinates(viewer.viewport.pointFromPixel(new OpenSeadragon.Point(0,0), true)).negate();
+    var imageOffset = viewer.viewport
+      .viewportToImageCoordinates(
+        viewer.viewport.pointFromPixel(new OpenSeadragon.Point(0, 0), true)
+      )
+      .negate();
     var zoom = viewer.viewport.getZoom(true);
     var imageZoom = viewer.viewport.viewportToImageZoom(zoom);
     var viewportSize = viewer.viewport.getContainerSize();
 
     return {
-      "webPoint": webPoint,
-      "viewportSize": viewportSize,
-      "viewportPoint": viewportPoint,
-      "imagePoint": imagePoint,
-      "imageOffset": imageOffset,
-      "imageZoom": imageZoom
-    }
+      webPoint: webPoint,
+      viewportSize: viewportSize,
+      viewportPoint: viewportPoint,
+      imagePoint: imagePoint,
+      imageOffset: imageOffset,
+      imageZoom: imageZoom,
+    };
   }
 
-  PanZoom.prototype.init = function(){
-
+  PanZoom.prototype.init = function () {
     viewer = OpenSeadragon({
-        id: "panzoom",
-        prefixUrl: opt.prefixUrl,
-        tileSources: opt.tileSources,
-        homeFillsViewer: true,
-        defaultZoomLevel: opt.defaultZoomLevel,
-        minZoomLevel: 	-1,
-        maxZoomLevel: 	3,
-        //showNavigator:  true,
-        //navigatorPosition:   "BOTTOM_LEFT",
-        //navigatorAutoFade:  true,
-        // animationTime: 0
+      id: "panzoom",
+      prefixUrl: opt.prefixUrl,
+      tileSources: opt.tileSources,
+      homeFillsViewer: true,
+      defaultZoomLevel: opt.defaultZoomLevel,
+      minZoomLevel: -1,
+      maxZoomLevel: 3,
+      //showNavigator:  true,
+      //navigatorPosition:   "BOTTOM_LEFT",
+      //navigatorAutoFade:  true,
+      // animationTime: 0
     });
 
     challengeFilterResults = new Array(opt.rows * opt.cols).fill(1);
@@ -67,58 +71,69 @@ var PanZoom = (function() {
     if (opt.debug) this.loadDebug();
   };
 
-  PanZoom.prototype.loadDebug = function(){
+  PanZoom.prototype.loadDebug = function () {
     $debug = $("#debug");
     $debug.addClass("active");
   };
 
   // https://openseadragon.github.io/examples/viewport-coordinates/
-  PanZoom.prototype.loadListeners = function(){
+  PanZoom.prototype.loadListeners = function () {
     var _this = this;
 
-    viewer.addHandler('open', function() {
+    viewer.addHandler("open", function () {
       tracker = new OpenSeadragon.MouseTracker({
-          element: viewer.container,
-          moveHandler: function(e) {
-            lastWebPoint = e.position;
-            _this.onMouseMove();
-          }
+        element: viewer.container,
+        moveHandler: function (e) {
+          lastWebPoint = e.position;
+          _this.onMouseMove();
+        },
       });
-
       var imageSize = viewer.world.getItemAt(0).getContentSize();
       imageW = imageSize.x;
       imageH = imageSize.y;
-      console.log("Image size: "+imageSize.toString());
+      console.log("Image size: " + imageSize.toString());
 
       ncellW = 1.0 / opt.cols;
       ncellH = 1.0 / opt.rows;
-      cellW = 1.0 * imageW / opt.cols;
-      cellH = 1.0 * imageH / opt.rows;
+      cellW = (1.0 * imageW) / opt.cols;
+      cellH = (1.0 * imageH) / opt.rows;
 
-      $(".openseadragon-canvas").append($('<a href="#" id="highlight" class="highlight"><h2 id="highlight-title" class="title"></h2></a>'));
+      $(".openseadragon-canvas").append(
+        $(
+          '<a href="#" id="highlight" class="highlight"><h2 id="highlight-title" class="title"></h2></a>'
+        )
+      );
       $highlight = $("#highlight");
       $title = $("#highlight-title");
+
       $metadata = $("#metadata");
       $metadataContent = $("#metadata-content");
-
-
-      $(".close-link").on("click", function(){
+      $(".close-link").on("click", function () {
         $metadata.removeClass("active");
       });
 
+      /*
+        $marker = $("#marker");
+        $markerContent = $("#marker-content");
+        $(".close-link-marker").on("click", function () {
+          $marker.removeClass("active");
+        }); 
+      */
+
       if (isTouch) {
-        viewer.addHandler('canvas-click', function(e){
+        viewer.addHandler("canvas-click", function (e) {
           e.preventDefaultAction = true;
           lastWebPoint = e.position;
           _this.onMouseMove();
           _this.renderMetadata();
         });
       } else {
-        viewer.addHandler('canvas-click', function(e){
+        viewer.addHandler("canvas-click", function (e) {
           e.preventDefaultAction = true;
         });
-        $highlight.on("click", function(e){
+        $highlight.on("click", function (e) {
           _this.renderMetadata();
+          //_this.renderMarker();
         });
       }
 
@@ -126,32 +141,32 @@ var PanZoom = (function() {
 
       tracker.setTracking(true);
 
-      viewer.addHandler('animation', function(){
+      viewer.addHandler("animation", function () {
         _this.onAnimation();
       });
     });
 
-    $(document).on("domain.update", function(e, challengeStart, challengeEnd) {
+    $(document).on("domain.update", function (e, challengeStart, challengeEnd) {
       _this.onUpdateDomain(challengeStart, challengeEnd);
     });
 
-    $(document).on("subject.select", function(e, subjectIndices) {
+    $(document).on("subject.select", function (e, subjectIndices) {
       _this.onSelectSubject(subjectIndices);
     });
   };
 
-  PanZoom.prototype.loadOverlay = function(){
+  PanZoom.prototype.loadOverlay = function () {
     var $el = $("#panzoom");
     var w = $el.width();
     var h = $el.height();
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
-    pixiApp = new PIXI.Application({width: w, height: h, transparent: true});
+    pixiApp = new PIXI.Application({ width: w, height: h, transparent: true });
 
     // create a canvas to hold grid data
-    var canvas = document.createElement('canvas');
+    var canvas = document.createElement("canvas");
     canvas.width = opt.cols;
     canvas.height = opt.rows;
-    filterCtx = canvas.getContext('2d');
+    filterCtx = canvas.getContext("2d");
     filterImData = filterCtx.createImageData(opt.cols, opt.rows);
     filterData = filterImData.data;
 
@@ -171,18 +186,18 @@ var PanZoom = (function() {
       height: "100%",
       top: 0,
       left: 0,
-      "z-index": 0
-    })
+      "z-index": 0,
+    });
     $(".openseadragon-canvas").append($overlay);
     this.transformOverlay();
   };
 
-  PanZoom.prototype.onAnimation = function(e){
+  PanZoom.prototype.onAnimation = function (e) {
     isAnimating = true;
     $highlight.removeClass("active");
 
     if (animateTimeout) clearTimeout(animateTimeout);
-    animateTimeout = setTimeout(function(){
+    animateTimeout = setTimeout(function () {
       isAnimating = false;
     }, opt.highlightDelay);
 
@@ -190,36 +205,43 @@ var PanZoom = (function() {
     this.onMouseMove();
   };
 
-  PanZoom.prototype.onFilter = function(){
-    if (filterData===undefined) return;
+  PanZoom.prototype.onFilter = function () {
+    if (filterData === undefined) return;
 
-    for (var row=0; row<opt.rows; row++) {
-      for (var col=0; col<opt.cols; col++) {
+    //const union = challengeFilterResults.map((x, i) => x && subjectFilterResults[i]);
+    //selectedMonstersIndices = union.reduce((accum, val, index) => val?[index, ...accum]:accum, []);
+    //$(document).trigger("selected.update", [challengeStart, challengeEnd]);
+
+    for (var row = 0; row < opt.rows; row++) {
+      for (var col = 0; col < opt.cols; col++) {
         var i = row * opt.cols + col;
-        var r=0, g=0, b=0, a=0;
+        var r = 0,
+          g = 0,
+          b = 0,
+          a = 0;
         if (challengeFilterResults[i] < 1 || subjectFilterResults[i] < 1) {
           a = 165;
         }
-        filterData[i*4] = r;
-        filterData[i*4+1] = g;
-        filterData[i*4+2] = b;
-        filterData[i*4+3] = a;
+        filterData[i * 4] = r;
+        filterData[i * 4 + 1] = g;
+        filterData[i * 4 + 2] = b;
+        filterData[i * 4 + 3] = a;
       }
     }
     filterCtx.putImageData(filterImData, 0, 0);
     filterTexture && filterTexture.update();
   };
 
-  PanZoom.prototype.onMouseMove = function(){
+  PanZoom.prototype.onMouseMove = function () {
     var vp = getViewportDetails();
     if (!vp) return false;
 
     this.renderDebug(vp);
     if (!isAnimating) this.renderHighlight(vp);
-
+    this.renderAllMarks(vp);
   };
 
-  PanZoom.prototype.onResize = function(){
+  PanZoom.prototype.onResize = function () {
     var $el = $("#panzoom");
     var w = $el.width();
     var h = $el.height();
@@ -227,12 +249,12 @@ var PanZoom = (function() {
     this.transformOverlay();
   };
 
-  PanZoom.prototype.onSelectSubject = function(subjectIndices){
+  PanZoom.prototype.onSelectSubject = function (subjectIndices) {
     subjectFilterResults = new Array(opt.rows * opt.cols).fill(1);
 
     if (subjectIndices !== undefined && !subjectIndices.has(-1)) {
       const indicesArr = Array.from(subjectIndices);
-      for (var i=0; i< metadata.subjects.length; i++) {
+      for (var i = 0; i < metadata.subjects.length; i++) {
         var subjects = metadata.subjects[i];
         var result = 0;
         var slen = subjects.length;
@@ -254,44 +276,110 @@ var PanZoom = (function() {
     return false;
   }
 
-  PanZoom.prototype.onUpdateDomain = function(challengeStart, challengeEnd) {
+  PanZoom.prototype.onUpdateDomain = function (challengeStart, challengeEnd) {
     challengeFilterResults = new Array(opt.rows * opt.cols).fill(1);
     // only filter if total domain was changed
     if (challengeStart > minChallenge || challengeEnd < maxChallenge) {
-
-      for (var i=0; i < metadata.challenge.length; i++) {
+      for (var i = 0; i < metadata.challenge.length; i++) {
         var challenge = metadata.challenge[i];
         var result = 0;
-        if (challenge >= challengeStart && challenge <= challengeEnd) result = 1;
+        if (challenge >= challengeStart && challenge <= challengeEnd)
+          result = 1;
         challengeFilterResults[i] = result;
       }
     }
-    
+
     this.onFilter();
   };
 
-  PanZoom.prototype.renderDebug = function(details){
+  PanZoom.prototype.renderDebug = function (details) {
     if (!opt.debug) return false;
 
     details = details || getViewportDetails();
     if (!details) return false;
 
-    var html = '<strong>Web:</strong> ' + details.webPoint.toString();
-    html += '<br /><strong>Viewport:</strong> ' + details.viewportPoint.toString();
-    html += '<br /><strong>Image:</strong> ' + details.imagePoint.toString();
-    html += '<br /><strong>Offset:</strong> ' + details.imageOffset.toString();
-    html += '<br /><strong>Image Zoom:</strong> ' + (Math.round(details.imageZoom * 100) / 100);
+    var html = "<strong>Web:</strong> " + details.webPoint.toString();
+    html +=
+      "<br /><strong>Viewport:</strong> " + details.viewportPoint.toString();
+    html += "<br /><strong>Image:</strong> " + details.imagePoint.toString();
+    html += "<br /><strong>Offset:</strong> " + details.imageOffset.toString();
+    html +=
+      "<br /><strong>Image Zoom:</strong> " +
+      Math.round(details.imageZoom * 100) / 100;
 
     $debug.html(html);
   };
 
-  PanZoom.prototype.renderHighlight = function(details){
+  PanZoom.prototype.renderAllMarks = function (details) {
+    $(".mark").remove();
+    selectedMonstersIndices.forEach((index) => {
+      this.renderMark(details, index);
+    });
+  };
+
+  PanZoom.prototype.renderMark = function (details, index) {
+    details = details || getViewportDetails();
+    if (!details) return false;
+
+    var scale = details.imageZoom;
+
+    var row = index % opt.cols;
+    var col = parseInt(index / opt.cols);
+
+    var rowPerc = row / opt.rows;
+    var colPerc = col / opt.cols;
+
+    var ix = imageH * rowPerc;
+    var iy = imageW * colPerc;
+
+    var cellX = floorToNearest(ix, cellW);
+    var cellY = floorToNearest(iy, cellH);
+    // normalize image point and offset
+    var nImageX = cellX / imageW;
+    var nImageY = cellY / imageH;
+
+    var nOffsetX = details.imageOffset.x / imageW;
+    var nOffsetY = details.imageOffset.y / imageH;
+
+    // get the perceived/scaled width/height
+
+    var sImageW = imageW * scale;
+    var sImageH = imageH * scale;
+
+    // get the position within the viewport
+    var vpX = nImageX * sImageW + nOffsetX * sImageW;
+    var vpY = nImageY * sImageH + nOffsetY * sImageH;
+
+    $(".openseadragon-canvas").prepend(
+      $(`<a href="#" class="mark active ${"mark-" + index}" ></a>`)
+    );
+
+    $(".mark-" + index).css({
+      transform:
+        "translate3d(" +
+        vpX +
+        "px, " +
+        vpY +
+        "px, 0) scale3d(" +
+        scale +
+        "," +
+        scale +
+        "," +
+        scale +
+        ")",
+    });
+  };
+  PanZoom.prototype.renderHighlight = function (details) {
     details = details || getViewportDetails();
     if (!details) return false;
 
     // first check if mouse is within the image
-    if (details.imagePoint.x < 0 || details.imagePoint.y < 0 ||
-        details.imagePoint.x > imageW || details.imagePoint.y > imageH) {
+    if (
+      details.imagePoint.x < 0 ||
+      details.imagePoint.y < 0 ||
+      details.imagePoint.x > imageW ||
+      details.imagePoint.y > imageH
+    ) {
       $highlight.removeClass("active");
       return false;
     }
@@ -318,39 +406,77 @@ var PanZoom = (function() {
     var vpY = nImageY * sImageH + nOffsetY * sImageH;
 
     // check to see if cell is within viewport
-    if ((vpX+sCellW) < 0 || (vpY+sCellH) < 0 ||
-        vpX > details.viewportSize.x || vpY > details.viewportSize.y) {
+    if (
+      vpX + sCellW < 0 ||
+      vpY + sCellH < 0 ||
+      vpX > details.viewportSize.x ||
+      vpY > details.viewportSize.y
+    ) {
       $highlight.removeClass("active");
       return false;
     }
 
     // transform and activate
     $highlight.css({
-      "transform": "translate3d("+vpX+"px, "+vpY+"px, 0) scale3d("+scale+","+scale+","+scale+")"
+      transform:
+        "translate3d(" +
+        vpX +
+        "px, " +
+        vpY +
+        "px, 0) scale3d(" +
+        scale +
+        "," +
+        scale +
+        "," +
+        scale +
+        ")",
     });
     $highlight.addClass("active");
     $title.css({
-      "transform": "scale3d("+(1.0/scale)+","+(1.0/scale)+","+(1.0/scale)+")"
+      transform:
+        "scale3d(" + 1.0 / scale + "," + 1.0 / scale + "," + 1.0 / scale + ")",
     });
 
     var col = parseInt(nImageX * opt.cols);
     var row = parseInt(nImageY * opt.rows);
+
+    // console.log(vpX, vpY, " -- ", col, row, " -- ", cellX, cellY, cellW, cellH, " -- ", nImageX, nImageY);
+
     var dataIndex = parseInt(row * opt.cols + col);
     currentDataIndex = dataIndex;
     this.renderTitle(dataIndex);
 
+    // uncomment this to enable details on hovering
     // if ($metadata.hasClass("active")) this.renderMetadata(dataIndex);
   };
 
-  PanZoom.prototype.renderMetadata = function(dataIndex){
-    if (metadata===undefined) return;
-    
+  /*   PanZoom.prototype.renderMarker = function () {
+    var html = "";
+
+    html +=
+      "<div style= 'background: wheat;width: 500px; height: 500px'></div>";
+    if (selectedMonstersIndices.length > 0) {
+      const url =
+        metadata.imageBaseUrl + metadata.filenames[selectedMonstersIndices[0]];
+      html +=
+        '<div class="marker-image" style="background-image: url(' +
+        url +
+        ');"></div>';
+    }
+
+    $markerContent.html(html);
+    $marker.addClass("active");
+  }; */
+
+  PanZoom.prototype.renderMetadata = function (dataIndex) {
+    if (metadata === undefined) return;
+
     dataIndex = dataIndex || currentDataIndex;
     var id = metadata.ids[dataIndex];
 
     // hide title and metadata if it doesn't exist
-    if (id===undefined || id.length <= 0) {
-      $metadata.removeClass('active');
+    if (id === undefined || id.length <= 0) {
+      $metadata.removeClass("active");
       return;
     }
 
@@ -360,40 +486,70 @@ var PanZoom = (function() {
     var url = metadata.itemBaseUrl + id;
     var detailsUrl = metadata.itemBaseUrl + filename;
 
-    var html = '';//'<h2>' + title + '</h2>';
-    //if (challengeStr.length > 0) html += '<h3>' + challengeStr + '</h3>';
+    var html = "";
 
-    html +=  "<iframe scrolling='no' src='" + url +"' scrolling='yes' style='border: 0px none;  height: 500px; width: 500px;'></iframe>"
-
+    html +=
+      "<iframe scrolling='yes' src='" +
+      url +
+      "' scrolling='yes' style='border: 0px none;  height: 500px; width: 500px;'></iframe>";
     //html += '<div class="metadata-image" style="background-image: url('+imageUrl+');"></div>';
-    html += '<div><a href="'+url+'" class="button" target="_blank">View on full record</a></div>';
-    $metadataContent.html(html)
-    $metadata.addClass('active');
+    var marker = `<i class="mark-button fa-star ${
+      selectedMonstersIndices.includes(dataIndex) ? "fas" : "far"
+    } fa-2x"></i>`;
+    var viewRecord =
+      '<a href="' +
+      url +
+      '" class="button" target="_blank">View on full record</a>';
+
+    html += `<div style= "justify-content: center; display: flex;"> ${viewRecord} <span style="display: inline-block;width: 50px;"></span>${marker} </div>`;
+
+    $metadataContent.html(html);
+    var _this = this;
+    $(".mark-button").click(function () {
+      if (selectedMonstersIndices.includes(dataIndex)) {
+        $(this).removeClass("fas");
+        $(this).addClass("far");
+        selectedMonstersIndices = selectedMonstersIndices.filter(
+          (x) => x !== dataIndex
+        );
+        $(".mark-" + dataIndex).remove();
+      } else {
+        $(this).removeClass("far");
+        $(this).addClass("fas");
+        selectedMonstersIndices.push(dataIndex);
+      }
+      console.log(selectedMonstersIndices);
+
+      _this.renderAllMarks(getViewportDetails());
+      //$(document).trigger("marked.update", [selectedMonstersIndices]);
+    });
+
+    $metadata.addClass("active");
   };
 
-  PanZoom.prototype.renderTitle = function(dataIndex){
-    if (metadata===undefined) return;
+  PanZoom.prototype.renderTitle = function (dataIndex) {
+    if (metadata === undefined) return;
 
     dataIndex = dataIndex || currentDataIndex;
     var title = metadata.titles[dataIndex];
 
     // hide title and metadata if it doesn't exist
-    if (title===undefined || title.length <= 0) {
+    if (title === undefined || title.length <= 0) {
       $title.removeClass("active");
       return;
     }
 
     var challengeStr = metadata.challengeStrings[dataIndex];
-    title += ' (' + challengeStr + ' - ';
+    title += " (" + challengeStr + " - ";
     const subjectIndex = metadata.subjects[dataIndex];
-    const subject = metadata.subjectMeta[subjectIndex][0]
-    
-    title += '' + subject + ')';
+    const subject = metadata.subjectMeta[subjectIndex][0];
+
+    title += "" + subject + ")";
 
     $title.text(title).addClass("active");
   };
 
-  PanZoom.prototype.setMetadata = function(data){
+  PanZoom.prototype.setMetadata = function (data) {
     metadata = data;
 
     var flatChallengeData = _.flatten(metadata.challenge, true);
@@ -401,7 +557,7 @@ var PanZoom = (function() {
     maxChallenge = _.max(flatChallengeData);
   };
 
-  PanZoom.prototype.transformOverlay = function(){
+  PanZoom.prototype.transformOverlay = function () {
     var vp = getViewportDetails();
     if (!vp) return false;
 
@@ -422,5 +578,4 @@ var PanZoom = (function() {
   };
 
   return PanZoom;
-
 })();

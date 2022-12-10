@@ -1,7 +1,11 @@
 "use strict";
 
 var DatePicker = (function () {
-  var opt, challengeFrequency, dataBySubject, challengeRange;
+  var opt,
+    challengeFrequency,
+    dataBySubject,
+    challengeRange,
+    uniqueChallengeValues;
   var svg, $svg, $dwindow, $dcontainer, $dragAndResize, $reset;
   var $challengeStart, $challengeEnd, $bgWest, $bgEast, resizeHelperWidth;
   var svgWidth, svgHeight, graphWidth, graphHeight;
@@ -63,7 +67,6 @@ var DatePicker = (function () {
     $(document).on("subject.select", function (e, subjectIndices) {
       const subjectFilterResults = new Array(opt.subjectsData.length).fill(1);
 
-
       if (subjectIndices !== undefined && !subjectIndices.has(-1)) {
         const indicesArr = Array.from(subjectIndices);
 
@@ -74,19 +77,20 @@ var DatePicker = (function () {
           if (slen > 0 && containsAny(subjects, indicesArr)) result = 1;
           subjectFilterResults[i] = result;
         }
-        const challengeDataFilteredBySubject = opt.challengeData.filter((x, i) => subjectFilterResults[i]);
-        const bySubjectFrequencyResult = _this.computeFrequences(challengeDataFilteredBySubject);
+        const challengeDataFilteredBySubject = opt.challengeData.filter(
+          (x, i) => subjectFilterResults[i]
+        );
+        const bySubjectFrequencyResult = _this.computeFrequences(
+          challengeDataFilteredBySubject
+        );
         dataBySubject = bySubjectFrequencyResult.frequency;
-      }
-      else
-      {
+      } else {
         dataBySubject = [];
       }
-      
+
       _this.loadUI();
     });
   };
-
 
   function containsAny(arr1, arr2) {
     for (let i = 0; i < arr2.length; i++) {
@@ -138,6 +142,8 @@ var DatePicker = (function () {
       .enter()
       .append("rect")
       .attr("class", "bar")
+      .attr("fill", "#4e79a7") //"#4e79a7","#f28e2c"  #666666
+     // .attr("style","outline: thin solid red")
       .attr("x", function (d) {
         return xRange(d.value);
       })
@@ -156,7 +162,8 @@ var DatePicker = (function () {
         .enter()
         .append("rect")
         .attr("class", "bar")
-        .attr("fill", "#b7d62b")
+        .attr("fill", "#f28e2c") //  ffff99
+       
         .attr("x", function (d) {
           return xRange(d.value);
         })
@@ -177,14 +184,18 @@ var DatePicker = (function () {
       .call(d3.axisBottom(xRange));
 
     d3.selectAll(".xaxis .tick").each(function (d, i) {
-      var challenge = challengeRange[0] + i;
-      if (challenge % 5 > 0) {
+      if (d >= 1 && d % 3 > 0) {
         this.remove();
       }
     });
 
     // add the y Axis
-    svg.append("g").call(d3.axisLeft(yRange));
+    svg.append("g").attr("class", "yaxis").call(d3.axisLeft(yRange));
+    d3.selectAll(".yaxis .tick").each(function (d, i) {
+      if (d % 3 > 0) {
+        this.remove();
+      }
+    });
 
     // resize the datepicker window
     $dcontainer.css({
@@ -210,7 +221,8 @@ var DatePicker = (function () {
     $challengeEnd = $(
       '<div class="challenge" aria-live="polite" aria-label="Filtered end challenge" />'
     );
-    $(".ui-resizable-w").append($challengeStart);
+    
+    $(".ui-resizable-w").append($challengeStart) 
     $(".ui-resizable-e").append($challengeEnd);
 
     $bgWest = $('<div class="resize-bg" />');
@@ -230,37 +242,45 @@ var DatePicker = (function () {
     var x = parseFloat($dwindow.css("left"));
     var nx = x / cw;
 
+    var challengeStart =
+      uniqueChallengeValues[parseInt(nx * uniqueChallengeValues.length)].value;
+    var challengeEnd =
+      uniqueChallengeValues[parseInt(nw * uniqueChallengeValues.length) - (nw === 1? 1: 0)].value;
+
     $bgWest.width(Math.max(x - resizeHelperWidth, 0));
     $bgEast.width(Math.max(cw - w - x - resizeHelperWidth, 0));
 
-    var challengeStart = Math.round(
-      lerp(challengeRange[0], challengeRange[1], nx)
-    );
-    var challengeEnd = Math.round(
-      lerp(challengeRange[0], challengeRange[1], nx + nw)
-    );
     this.updateDomain(challengeStart, challengeEnd);
   };
 
   DatePicker.prototype.parseData = function () {
-    const result  = this.computeFrequences(opt.challengeData);
+    const result = this.computeFrequences(opt.challengeData);
     challengeFrequency = result.frequency;
     challengeRange = result.range;
+    uniqueChallengeValues = result.frequency;
     console.log(
-      "Found challenge range: [" + challengeRange[0] + " - " + challengeRange[1] + "]"
+      "Found challenge range: [" +
+        challengeRange[0] +
+        " - " +
+        challengeRange[1] +
+        "]"
     );
   };
 
   DatePicker.prototype.computeFrequences = function (rawData) {
     //var rawData = opt.challengeData;
     var flatData = _.flatten(rawData, true);
-    var min = 0;//_.min(flatData);
+    var min = 0; //_.min(flatData);
     var max = _.max(flatData);
+    var uniqueValues = [...new Set(flatData)];
+    uniqueValues.sort(function (a, b) {
+      return a - b;
+    });
 
     const range = [min, max];
 
-    var frequencyData = _.times(max - min + 1, function (i) {
-      var value = min + i;
+    var frequencyData = _.times(uniqueValues.length, function (i) {
+      var value = uniqueValues[i]; // min + i;
       var sum = _.reduce(
         flatData,
         function (memo, Cmp) {
@@ -274,9 +294,11 @@ var DatePicker = (function () {
         count: sum,
       };
     });
+
     return {
       frequency: frequencyData,
       range: range,
+      uniqueValues: uniqueValues,
       min: min,
       max: max,
     };

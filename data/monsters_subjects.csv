@@ -1,402 +1,402 @@
-id,subject
-aarakocra,humanoid (aarakocra)
-aboleth,aberration
-acolyte,humanoid (any race)
-adult-black-dragon,dragon
-adult-blue-dragon,dragon
-adult-brass-dragon,dragon
-adult-bronze-dragon,dragon
-adult-copper-dragon,dragon
-adult-gold-dragon,dragon
-adult-green-dragon,dragon
-adult-red-dragon,dragon
-adult-silver-dragon,dragon
-adult-white-dragon,dragon
-air-elemental,elemental
-allosaurus,beast
-ancient-black-dragon,dragon
-ancient-blue-dragon,dragon
-ancient-brass-dragon,dragon
-ancient-bronze-dragon,dragon
-ancient-copper-dragon,dragon
-ancient-gold-dragon,dragon
-ancient-green-dragon,dragon
-ancient-red-dragon,dragon
-ancient-shadow,undead
-ancient-silver-dragon,dragon
-ancient-white-dragon,dragon
-androsphinx,monstrosity
-animated-armor,construct
-ankheg,monstrosity
-ankylosaurus,beast
-annis-hag,fey
-ape,beast
-archmage,humanoid (any race)
-assassin,humanoid (any race)
-astral-dreadnought,monstrosity (titan)
-aurochs,beast
-awakened-shrub,plant
-awakened-tree,plant
-axe-beak,beast
-azer,elemental
-baboon,beast
-badger,beast
-balor,fiend (demon)
-bandit,humanoid (any race)
-bandit-captain,humanoid (any race)
-banshee,undead
-barbed-devil,fiend (devil)
-barghest,fiend (shapechanger)
-barlgura,fiend (demon)
-basilisk,monstrosity
-bat,beast
-bearded-devil,fiend (devil)
-behir,monstrosity
-belaphoss,fiend (demon)
-berserker,humanoid (any race)
-black-bear,beast
-black-dragon-wyrmling,dragon
-black-pudding,ooze
-blink-dog,fey
-blood-hawk,beast
-blue-dragon-wyrmling,dragon
-boar,beast
-bone-devil,fiend (devil)
-brass-dragon-wyrmling,dragon
-bronze-dragon-wyrmling,dragon
-brown-bear,beast
-bugbear,humanoid (goblinoid)
-bulette,monstrosity
-bullywug,humanoid (bullywug)
-camel,beast
-cat,beast
-centaur,monstrosity
-chain-devil,fiend (devil)
-chimera,monstrosity
-chuul,aberration
-clay-golem,construct
-cloaker,aberration
-cloud-giant,giant
-cockatrice,monstrosity
-commoner,humanoid (any race)
-constrictor-snake,beast
-copper-dragon-wyrmling,dragon
-couatl,celestial
-cow,beast
-crab,beast
-crawling-claw,undead
-crocodile,beast
-cult-fanatic,humanoid (any race)
-cultist,humanoid (any race)
-cyclops,giant
-dao,elemental
-darkmantle,monstrosity
-death-dog,monstrosity
-deep-gnome-svirfneblin,humanoid (gnome)
-deer,beast
-deva,celestial
-devilroot,plant
-dire-wolf,beast
-djinni,elemental
-dolphin,beast
-doppelganger,monstrosity (shapechanger)
-draft-horse,beast
-dragon-turtle,dragon
-dretch,fiend (demon)
-drider,monstrosity
-drow,humanoid (elf)
-drow-house-captain,humanoid (elf)
-drow-inquisitor,humanoid (elf)
-drow-mage,humanoid (elf)
-druid,humanoid (any race)
-dryad,fey
-duergar,humanoid (dwarf)
-dust-mephit,elemental
-eagle,beast
-earth-elemental,elemental
-efreeti,elemental
-elephant,beast
-elk,beast
-erinyes,fiend (devil)
-ettercap,monstrosity
-ettin,giant
-fire-elemental,elemental
-fire-giant,giant
-fire-snake,elemental
-flameskull,undead
-flesh-golem,construct
-flind,humanoid (gnoll)
-flying-snake,beast
-flying-sword,construct
-frog,beast
-froghemoth,monstrosity
-frost-giant,giant
-galeb-duhr,elemental
-gargoyle,elemental
-gauth,aberration
-gelatinous-cube,ooze
-ghast,undead
-ghost,undead
-ghoul,undead
-giant-ape,beast
-giant-badger,beast
-giant-bat,beast
-giant-boar,beast
-giant-centipede,beast
-giant-constrictor-snake,beast
-giant-crab,beast
-giant-crocodile,beast
-giant-eagle,beast
-giant-elk,beast
-giant-fire-beetle,beast
-giant-frog,beast
-giant-goat,beast
-giant-hyena,beast
-giant-lizard,beast
-giant-octopus,beast
-giant-owl,beast
-giant-poisonous-snake,beast
-giant-rat,beast
-giant-scorpion,beast
-giant-sea-horse,beast
-giant-shark,beast
-giant-spider,beast
-giant-toad,beast
-giant-two-headed-goat,beast
-giant-vulture,beast
-giant-wasp,beast
-giant-weasel,beast
-giant-wolf-spider,beast
-gibbering-mouther,aberration
-glabrezu,fiend (demon)
-gladiator,humanoid (any race)
-gnoll,humanoid (gnoll)
-gnoll-pack-lord,humanoid (gnoll)
-goat,beast
-goblin,humanoid (goblinoid)
-gold-dragon-wyrmling,dragon
-gorgon,monstrosity
-gray-ooze,ooze
-green-dragon-wyrmling,dragon
-green-hag,fey
-grell,aberration
-grick,monstrosity
-griffon,monstrosity
-grimlock,humanoid (grimlock)
-guard,humanoid (any race)
-guardian-naga,monstrosity
-gynosphinx,monstrosity
-half-ogre,giant
-half-red-dragon-veteran,humanoid (human)
-harpy,monstrosity
-hawk,beast
-hell-hound,fiend
-helmed-horror,construct
-hezrou,fiend (demon)
-hill-giant,giant
-hippogriff,monstrosity
-hobgoblin,humanoid (goblinoid)
-hobgoblin-captain,humanoid (goblinoid)
-hobgoblin-iron-shadow,humanoid (goblinoid)
-homunculus,construct
-hook-horror,monstrosity
-horned-devil,fiend (devil)
-hunter-shark,beast
-hydra,monstrosity
-hyena,beast
-ice-devil,fiend (devil)
-ice-mephit,elemental
-imp,"fiend (devil, shapechanger)"
-invisible-stalker,elemental
-iron-golem,construct
-jackal,beast
-jackalwere,humanoid (shapechanger)
-kenku,humanoid (kenku)
-killer-whale,beast
-knight,humanoid (any race)
-kobold,humanoid (kobold)
-kobold-inventor,humanoid (kobold)
-kraken,monstrosity (titan)
-kuo-toa,humanoid (kuo-toa)
-kuo-toa-archpriest,humanoid (kuo-toa)
-kuo-toa-whip,humanoid (kuo-toa)
-laeral-silverhand,humanoid (human)
-lamia,monstrosity
-lemure,fiend (devil)
-lich,undead
-lion,beast
-lizard,beast
-lizard-king-queen,humanoid (lizardfolk)
-lizardfolk,humanoid (lizardfolk)
-lizardfolk-shaman,humanoid (lizardfolk)
-mage,humanoid (any race)
-magma-mephit,elemental
-magmin,elemental
-mammoth,beast
-manticore,monstrosity
-marilith,fiend (demon)
-mastiff,beast
-medusa,monstrosity
-merfolk,humanoid (merfolk)
-merrow,monstrosity
-mezzoloth,fiend (yugoloth)
-mimic,monstrosity (shapechanger)
-mindwitness,aberration
-minotaur,monstrosity
-minotaur-skeleton,undead
-moloch,fiend (devil)
-mud-mephit,elemental
-mule,beast
-mummified-warrior,undead
-mummy,undead
-mummy-lord,undead
-nalfeshnee,fiend (demon)
-narzugon,fiend (devil)
-night-hag,fiend
-nightmare,fiend
-nilbog,humanoid (goblinoid)
-noble,humanoid (any race)
-nothic,aberration
-nycaloth,fiend (yugoloth)
-ochre-jelly,ooze
-octopus,beast
-ogre,giant
-ogre-zombie,undead
-oni,giant
-orc,humanoid (orc)
-orc-eye-of-gruumsh,humanoid (orc)
-orcus,fiend (demon)
-orog,humanoid (orc)
-otyugh,aberration
-owl,beast
-owlbear,monstrosity
-panther,beast
-pegasus,celestial
-peryton,monstrosity
-phase-spider,monstrosity
-piercer,monstrosity
-pit-fiend,fiend (devil)
-planetar,celestial
-plesiosaurus,beast
-poisonous-snake,beast
-polar-bear,beast
-pony,beast
-priest,humanoid (any race)
-pseudodragon,dragon
-pteranodon,beast
-purple-worm,monstrosity
-quasit,"fiend (demon, shapechanger)"
-quetzalcoatlus,beast
-quipper,beast
-rakshasa,fiend
-rat,beast
-raven,beast
-red-dragon-wyrmling,dragon
-reef-manta-ray,beast
-reef-shark,beast
-remorhaz,monstrosity
-revenant,undead
-rhinoceros,beast
-riding-horse,beast
-roc,monstrosity
-roper,monstrosity
-rug-of-smothering,construct
-rust-monster,monstrosity
-saber-toothed-tiger,beast
-sahuagin,humanoid (sahuagin)
-salamander,elemental
-satyr,fey
-scorpion,beast
-scout,humanoid (any race)
-sea-hag,fey
-sea-horse,beast
-shadow,undead
-shadow-demon,fiend (demon)
-shambling-mound,plant
-shield-guardian,construct
-shrieker,plant
-sibriex,fiend (demon)
-silver-dragon-wyrmling,dragon
-skeleton,undead
-slithering-tracker,ooze
-smoke-mephit,elemental
-solar,celestial
-spectator,aberration
-specter,undead
-spider,beast
-spirit-naga,monstrosity
-sprite,fey
-spy,humanoid (any race)
-steam-mephit,elemental
-stirge,beast
-stone-giant,giant
-stone-giant-dreamwalker,giant (stone giant)
-stone-golem,construct
-storm-giant,giant
-succubus,fiend (shapechanger)
-swarm-of-bats,swarm of Tiny beasts
-swarm-of-insects,swarm of Tiny beasts
-swarm-of-poisonous-snakes,swarm of Tiny beasts
-swarm-of-quippers,swarm of Tiny beasts
-swarm-of-rats,swarm of Tiny beasts
-swarm-of-ravens,swarm of Tiny beasts
-swarm-of-rot-grubs,swarm of Tiny beasts
-tanarukk,"fiend (demon, orc)"
-tarrasque,monstrosity (titan)
-thug,humanoid (any race)
-tiger,beast
-treant,plant
-tribal-warrior,humanoid (any race)
-triceratops,beast
-troglodyte,humanoid (troglodyte)
-troll,giant
-twig-blight,plant
-tyrannosaurus-rex,beast
-umber-hulk,monstrosity
-unicorn,celestial
-vampire,undead (shapechanger)
-vampire-spawn,undead
-venerable-shadow,undead
-veteran,humanoid (any race)
-violet-fungus,plant
-vrock,fiend (demon)
-vulture,beast
-warhorse,beast
-warhorse-skeleton,undead
-water-elemental,elemental
-water-weird,elemental
-weasel,beast
-werebear,"humanoid (human, shapechanger)"
-wereboar,"humanoid (human, shapechanger)"
-wererat,"humanoid (human, shapechanger)"
-weretiger,"humanoid (human, shapechanger)"
-werewolf,"humanoid (human, shapechanger)"
-white-dragon-wyrmling,dragon
-wight,undead
-wild-dog,beast
-wild-dog-alpha,beast
-will-o--wisp,undead
-winged-kobold,humanoid (kobold)
-winter-wolf,monstrosity
-wolf,beast
-worg,monstrosity
-wraith,undead
-wyvern,dragon
-xorn,elemental
-yeti,monstrosity
-young-black-dragon,dragon
-young-blue-dragon,dragon
-young-brass-dragon,dragon
-young-bronze-dragon,dragon
-young-copper-dragon,dragon
-young-gold-dragon,dragon
-young-green-dragon,dragon
-young-red-dragon,dragon
-young-silver-dragon,dragon
-young-white-dragon,dragon
-yuan-ti-abomination,"monstrosity (shapechanger, yuan-ti)"
-yuan-ti-malison,"monstrosity (shapechanger, yuan-ti)"
-yuan-ti-nightmare-speaker,"monstrosity (shapechanger, yuan-ti)"
-yuan-ti-pureblood,humanoid (yuan-ti)
-zariel,fiend (devil)
-zombie,undead
+id,subject,subject-full
+aarakocra,humanoid,humanoid (aarakocra)
+aboleth,aberration,aberration
+acolyte,humanoid,humanoid (any race)
+adult-black-dragon,dragon,dragon
+adult-blue-dragon,dragon,dragon
+adult-brass-dragon,dragon,dragon
+adult-bronze-dragon,dragon,dragon
+adult-copper-dragon,dragon,dragon
+adult-gold-dragon,dragon,dragon
+adult-green-dragon,dragon,dragon
+adult-red-dragon,dragon,dragon
+adult-silver-dragon,dragon,dragon
+adult-white-dragon,dragon,dragon
+air-elemental,elemental,elemental
+allosaurus,beast,beast
+ancient-black-dragon,dragon,dragon
+ancient-blue-dragon,dragon,dragon
+ancient-brass-dragon,dragon,dragon
+ancient-bronze-dragon,dragon,dragon
+ancient-copper-dragon,dragon,dragon
+ancient-gold-dragon,dragon,dragon
+ancient-green-dragon,dragon,dragon
+ancient-red-dragon,dragon,dragon
+ancient-shadow,undead,undead
+ancient-silver-dragon,dragon,dragon
+ancient-white-dragon,dragon,dragon
+androsphinx,monstrosity,monstrosity
+animated-armor,construct,construct
+ankheg,monstrosity,monstrosity
+ankylosaurus,beast,beast
+annis-hag,fey,fey
+ape,beast,beast
+archmage,humanoid,humanoid (any race)
+assassin,humanoid,humanoid (any race)
+astral-dreadnought,monstrosity,monstrosity (titan)
+aurochs,beast,beast
+awakened-shrub,plant,plant
+awakened-tree,plant,plant
+axe-beak,beast,beast
+azer,elemental,elemental
+baboon,beast,beast
+badger,beast,beast
+balor,fiend,fiend (demon)
+bandit,humanoid,humanoid (any race)
+bandit-captain,humanoid,humanoid (any race)
+banshee,undead,undead
+barbed-devil,fiend,fiend (devil)
+barghest,fiend,fiend (shapechanger)
+barlgura,fiend,fiend (demon)
+basilisk,monstrosity,monstrosity
+bat,beast,beast
+bearded-devil,fiend,fiend (devil)
+behir,monstrosity,monstrosity
+belaphoss,fiend,fiend (demon)
+berserker,humanoid,humanoid (any race)
+black-bear,beast,beast
+black-dragon-wyrmling,dragon,dragon
+black-pudding,ooze,ooze
+blink-dog,fey,fey
+blood-hawk,beast,beast
+blue-dragon-wyrmling,dragon,dragon
+boar,beast,beast
+bone-devil,fiend,fiend (devil)
+brass-dragon-wyrmling,dragon,dragon
+bronze-dragon-wyrmling,dragon,dragon
+brown-bear,beast,beast
+bugbear,humanoid,humanoid (goblinoid)
+bulette,monstrosity,monstrosity
+bullywug,humanoid,humanoid (bullywug)
+camel,beast,beast
+cat,beast,beast
+centaur,monstrosity,monstrosity
+chain-devil,fiend,fiend (devil)
+chimera,monstrosity,monstrosity
+chuul,aberration,aberration
+clay-golem,construct,construct
+cloaker,aberration,aberration
+cloud-giant,giant,giant
+cockatrice,monstrosity,monstrosity
+commoner,humanoid,humanoid (any race)
+constrictor-snake,beast,beast
+copper-dragon-wyrmling,dragon,dragon
+couatl,celestial,celestial
+cow,beast,beast
+crab,beast,beast
+crawling-claw,undead,undead
+crocodile,beast,beast
+cult-fanatic,humanoid,humanoid (any race)
+cultist,humanoid,humanoid (any race)
+cyclops,giant,giant
+dao,elemental,elemental
+darkmantle,monstrosity,monstrosity
+death-dog,monstrosity,monstrosity
+deep-gnome-svirfneblin,humanoid,humanoid (gnome)
+deer,beast,beast
+deva,celestial,celestial
+devilroot,plant,plant
+dire-wolf,beast,beast
+djinni,elemental,elemental
+dolphin,beast,beast
+doppelganger,monstrosity,monstrosity (shapechanger)
+draft-horse,beast,beast
+dragon-turtle,dragon,dragon
+dretch,fiend,fiend (demon)
+drider,monstrosity,monstrosity
+drow,humanoid,humanoid (elf)
+drow-house-captain,humanoid,humanoid (elf)
+drow-inquisitor,humanoid,humanoid (elf)
+drow-mage,humanoid,humanoid (elf)
+druid,humanoid,humanoid (any race)
+dryad,fey,fey
+duergar,humanoid,humanoid (dwarf)
+dust-mephit,elemental,elemental
+eagle,beast,beast
+earth-elemental,elemental,elemental
+efreeti,elemental,elemental
+elephant,beast,beast
+elk,beast,beast
+erinyes,fiend,fiend (devil)
+ettercap,monstrosity,monstrosity
+ettin,giant,giant
+fire-elemental,elemental,elemental
+fire-giant,giant,giant
+fire-snake,elemental,elemental
+flameskull,undead,undead
+flesh-golem,construct,construct
+flind,humanoid,humanoid (gnoll)
+flying-snake,beast,beast
+flying-sword,construct,construct
+frog,beast,beast
+froghemoth,monstrosity,monstrosity
+frost-giant,giant,giant
+galeb-duhr,elemental,elemental
+gargoyle,elemental,elemental
+gauth,aberration,aberration
+gelatinous-cube,ooze,ooze
+ghast,undead,undead
+ghost,undead,undead
+ghoul,undead,undead
+giant-ape,beast,beast
+giant-badger,beast,beast
+giant-bat,beast,beast
+giant-boar,beast,beast
+giant-centipede,beast,beast
+giant-constrictor-snake,beast,beast
+giant-crab,beast,beast
+giant-crocodile,beast,beast
+giant-eagle,beast,beast
+giant-elk,beast,beast
+giant-fire-beetle,beast,beast
+giant-frog,beast,beast
+giant-goat,beast,beast
+giant-hyena,beast,beast
+giant-lizard,beast,beast
+giant-octopus,beast,beast
+giant-owl,beast,beast
+giant-poisonous-snake,beast,beast
+giant-rat,beast,beast
+giant-scorpion,beast,beast
+giant-sea-horse,beast,beast
+giant-shark,beast,beast
+giant-spider,beast,beast
+giant-toad,beast,beast
+giant-two-headed-goat,beast,beast
+giant-vulture,beast,beast
+giant-wasp,beast,beast
+giant-weasel,beast,beast
+giant-wolf-spider,beast,beast
+gibbering-mouther,aberration,aberration
+glabrezu,fiend,fiend (demon)
+gladiator,humanoid,humanoid (any race)
+gnoll,humanoid,humanoid (gnoll)
+gnoll-pack-lord,humanoid,humanoid (gnoll)
+goat,beast,beast
+goblin,humanoid,humanoid (goblinoid)
+gold-dragon-wyrmling,dragon,dragon
+gorgon,monstrosity,monstrosity
+gray-ooze,ooze,ooze
+green-dragon-wyrmling,dragon,dragon
+green-hag,fey,fey
+grell,aberration,aberration
+grick,monstrosity,monstrosity
+griffon,monstrosity,monstrosity
+grimlock,humanoid,humanoid (grimlock)
+guard,humanoid,humanoid (any race)
+guardian-naga,monstrosity,monstrosity
+gynosphinx,monstrosity,monstrosity
+half-ogre,giant,giant
+half-red-dragon-veteran,humanoid,humanoid (human)
+harpy,monstrosity,monstrosity
+hawk,beast,beast
+hell-hound,fiend,fiend
+helmed-horror,construct,construct
+hezrou,fiend,fiend (demon)
+hill-giant,giant,giant
+hippogriff,monstrosity,monstrosity
+hobgoblin,humanoid,humanoid (goblinoid)
+hobgoblin-captain,humanoid,humanoid (goblinoid)
+hobgoblin-iron-shadow,humanoid,humanoid (goblinoid)
+homunculus,construct,construct
+hook-horror,monstrosity,monstrosity
+horned-devil,fiend,fiend (devil)
+hunter-shark,beast,beast
+hydra,monstrosity,monstrosity
+hyena,beast,beast
+ice-devil,fiend,fiend (devil)
+ice-mephit,elemental,elemental
+imp,fiend,"fiend (devil, shapechanger)"
+invisible-stalker,elemental,elemental
+iron-golem,construct,construct
+jackal,beast,beast
+jackalwere,humanoid,humanoid (shapechanger)
+kenku,humanoid,humanoid (kenku)
+killer-whale,beast,beast
+knight,humanoid,humanoid (any race)
+kobold,humanoid,humanoid (kobold)
+kobold-inventor,humanoid,humanoid (kobold)
+kraken,monstrosity,monstrosity (titan)
+kuo-toa,humanoid,humanoid (kuo-toa)
+kuo-toa-archpriest,humanoid,humanoid (kuo-toa)
+kuo-toa-whip,humanoid,humanoid (kuo-toa)
+laeral-silverhand,humanoid,humanoid (human)
+lamia,monstrosity,monstrosity
+lemure,fiend,fiend (devil)
+lich,undead,undead
+lion,beast,beast
+lizard,beast,beast
+lizard-king-queen,humanoid,humanoid (lizardfolk)
+lizardfolk,humanoid,humanoid (lizardfolk)
+lizardfolk-shaman,humanoid,humanoid (lizardfolk)
+mage,humanoid,humanoid (any race)
+magma-mephit,elemental,elemental
+magmin,elemental,elemental
+mammoth,beast,beast
+manticore,monstrosity,monstrosity
+marilith,fiend,fiend (demon)
+mastiff,beast,beast
+medusa,monstrosity,monstrosity
+merfolk,humanoid,humanoid (merfolk)
+merrow,monstrosity,monstrosity
+mezzoloth,fiend,fiend (yugoloth)
+mimic,monstrosity,monstrosity (shapechanger)
+mindwitness,aberration,aberration
+minotaur,monstrosity,monstrosity
+minotaur-skeleton,undead,undead
+moloch,fiend,fiend (devil)
+mud-mephit,elemental,elemental
+mule,beast,beast
+mummified-warrior,undead,undead
+mummy,undead,undead
+mummy-lord,undead,undead
+nalfeshnee,fiend,fiend (demon)
+narzugon,fiend,fiend (devil)
+night-hag,fiend,fiend
+nightmare,fiend,fiend
+nilbog,humanoid,humanoid (goblinoid)
+noble,humanoid,humanoid (any race)
+nothic,aberration,aberration
+nycaloth,fiend,fiend (yugoloth)
+ochre-jelly,ooze,ooze
+octopus,beast,beast
+ogre,giant,giant
+ogre-zombie,undead,undead
+oni,giant,giant
+orc,humanoid,humanoid (orc)
+orc-eye-of-gruumsh,humanoid,humanoid (orc)
+orcus,fiend,fiend (demon)
+orog,humanoid,humanoid (orc)
+otyugh,aberration,aberration
+owl,beast,beast
+owlbear,monstrosity,monstrosity
+panther,beast,beast
+pegasus,celestial,celestial
+peryton,monstrosity,monstrosity
+phase-spider,monstrosity,monstrosity
+piercer,monstrosity,monstrosity
+pit-fiend,fiend,fiend (devil)
+planetar,celestial,celestial
+plesiosaurus,beast,beast
+poisonous-snake,beast,beast
+polar-bear,beast,beast
+pony,beast,beast
+priest,humanoid,humanoid (any race)
+pseudodragon,dragon,dragon
+pteranodon,beast,beast
+purple-worm,monstrosity,monstrosity
+quasit,fiend,"fiend (demon, shapechanger)"
+quetzalcoatlus,beast,beast
+quipper,beast,beast
+rakshasa,fiend,fiend
+rat,beast,beast
+raven,beast,beast
+red-dragon-wyrmling,dragon,dragon
+reef-manta-ray,beast,beast
+reef-shark,beast,beast
+remorhaz,monstrosity,monstrosity
+revenant,undead,undead
+rhinoceros,beast,beast
+riding-horse,beast,beast
+roc,monstrosity,monstrosity
+roper,monstrosity,monstrosity
+rug-of-smothering,construct,construct
+rust-monster,monstrosity,monstrosity
+saber-toothed-tiger,beast,beast
+sahuagin,humanoid,humanoid (sahuagin)
+salamander,elemental,elemental
+satyr,fey,fey
+scorpion,beast,beast
+scout,humanoid,humanoid (any race)
+sea-hag,fey,fey
+sea-horse,beast,beast
+shadow,undead,undead
+shadow-demon,fiend,fiend (demon)
+shambling-mound,plant,plant
+shield-guardian,construct,construct
+shrieker,plant,plant
+sibriex,fiend,fiend (demon)
+silver-dragon-wyrmling,dragon,dragon
+skeleton,undead,undead
+slithering-tracker,ooze,ooze
+smoke-mephit,elemental,elemental
+solar,celestial,celestial
+spectator,aberration,aberration
+specter,undead,undead
+spider,beast,beast
+spirit-naga,monstrosity,monstrosity
+sprite,fey,fey
+spy,humanoid,humanoid (any race)
+steam-mephit,elemental,elemental
+stirge,beast,beast
+stone-giant,giant,giant
+stone-giant-dreamwalker,giant,giant (stone giant)
+stone-golem,construct,construct
+storm-giant,giant,giant
+succubus,fiend,fiend (shapechanger)
+swarm-of-bats,swarm,swarm of Tiny beasts
+swarm-of-insects,swarm,swarm of Tiny beasts
+swarm-of-poisonous-snakes,swarm,swarm of Tiny beasts
+swarm-of-quippers,swarm,swarm of Tiny beasts
+swarm-of-rats,swarm,swarm of Tiny beasts
+swarm-of-ravens,swarm,swarm of Tiny beasts
+swarm-of-rot-grubs,swarm,swarm of Tiny beasts
+tanarukk,fiend,"fiend (demon, orc)"
+tarrasque,monstrosity,monstrosity (titan)
+thug,humanoid,humanoid (any race)
+tiger,beast,beast
+treant,plant,plant
+tribal-warrior,humanoid,humanoid (any race)
+triceratops,beast,beast
+troglodyte,humanoid,humanoid (troglodyte)
+troll,giant,giant
+twig-blight,plant,plant
+tyrannosaurus-rex,beast,beast
+umber-hulk,monstrosity,monstrosity
+unicorn,celestial,celestial
+vampire,undead,undead (shapechanger)
+vampire-spawn,undead,undead
+venerable-shadow,undead,undead
+veteran,humanoid,humanoid (any race)
+violet-fungus,plant,plant
+vrock,fiend,fiend (demon)
+vulture,beast,beast
+warhorse,beast,beast
+warhorse-skeleton,undead,undead
+water-elemental,elemental,elemental
+water-weird,elemental,elemental
+weasel,beast,beast
+werebear,humanoid,"humanoid (human, shapechanger)"
+wereboar,humanoid,"humanoid (human, shapechanger)"
+wererat,humanoid,"humanoid (human, shapechanger)"
+weretiger,humanoid,"humanoid (human, shapechanger)"
+werewolf,humanoid,"humanoid (human, shapechanger)"
+white-dragon-wyrmling,dragon,dragon
+wight,undead,undead
+wild-dog,beast,beast
+wild-dog-alpha,beast,beast
+will-o--wisp,undead,undead
+winged-kobold,humanoid,humanoid (kobold)
+winter-wolf,monstrosity,monstrosity
+wolf,beast,beast
+worg,monstrosity,monstrosity
+wraith,undead,undead
+wyvern,dragon,dragon
+xorn,elemental,elemental
+yeti,monstrosity,monstrosity
+young-black-dragon,dragon,dragon
+young-blue-dragon,dragon,dragon
+young-brass-dragon,dragon,dragon
+young-bronze-dragon,dragon,dragon
+young-copper-dragon,dragon,dragon
+young-gold-dragon,dragon,dragon
+young-green-dragon,dragon,dragon
+young-red-dragon,dragon,dragon
+young-silver-dragon,dragon,dragon
+young-white-dragon,dragon,dragon
+yuan-ti-abomination,monstrosity,"monstrosity (shapechanger, yuan-ti)"
+yuan-ti-malison,monstrosity,"monstrosity (shapechanger, yuan-ti)"
+yuan-ti-nightmare-speaker,monstrosity,"monstrosity (shapechanger, yuan-ti)"
+yuan-ti-pureblood,humanoid,humanoid (yuan-ti)
+zariel,fiend,fiend (devil)
+zombie,undead,undead

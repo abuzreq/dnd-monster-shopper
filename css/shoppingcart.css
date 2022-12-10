@@ -1,0 +1,242 @@
+.encounter-builder-sidebar {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: #f5f9fc;
+    max-width: 100%;
+    color: #000;
+}
+.encounter-builder-sidebar__header {
+    position: relative;
+    background: #f5f9fc;
+    padding: 16px;
+    border-bottom: 1px solid #d8e1e8;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.encounter-builder-sidebar__header-text {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+}
+.encounter-builder-sidebar__open-button {
+    appearance: none;
+    position: absolute;
+    bottom: 8px;
+    right: 100%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1b9af0;
+    border: none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding: 0;
+    box-shadow: -1px -1px 6px rgba(0, 0, 0, 0.25) !important;
+    z-index: -1;
+}
+.encounter-builder-sidebar__open-button svg {
+    width: 60%;
+    height: 60%;
+    fill: #fff;
+}
+.encounter-builder-sidebar__close-button {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+}
+.encounter-builder-sidebar__close-button svg {
+    width: 100%;
+    height: 100%;
+}
+.encounter-builder-sidebar__summary {
+    background: #f5f9fc;
+    padding: 16px;
+    border-bottom: 1px solid #d8e1e8;
+    flex: none;
+}
+.encounter-builder-sidebar__randomize-widget {
+    display: flex;
+    align-items: center;
+    padding: 16px 16px 0 16px;
+    flex: none;
+}
+.encounter-builder-sidebar__monsters {
+    padding: 16px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.encounter-builder-sidebar__monster + .encounter-builder-sidebar__monster, .encounter-builder-sidebar__group + .encounter-builder-sidebar__group {
+    margin-top: 16px;
+}
+
+.encounter-builder-sidebar__tabs {
+    flex: 1;
+    padding: 16px 16px 0;
+    overflow-y: auto;
+}
+.encounter-builder-sidebar__tabs .ddb-tab-underline {
+    background: none;
+}
+.encounter-builder-sidebar__drop-target {
+    width: 100%;
+    flex-grow: 1;
+    display: none;
+}
+.encounter-builder-sidebar__drop-target:before {
+    display: flex;
+    content: '';
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.encounter-builder-sidebar__drop-target.is-over:before {
+    width: 100%;
+    opacity: 1;
+    border: 2px dashed #1b9af0;
+    border-radius: 3px;
+}
+.encounter-builder-sidebar__drop-target--group.is-dragging--group {
+    display: block;
+}
+.encounter-builder-sidebar__drop-target--group.is-dragging--group.is-over:before {
+    content: 'Move Group Here';
+}
+.encounter-builder-sidebar__drop-target--monster.is-dragging--monster {
+    display: block;
+}
+.encounter-builder-sidebar__drop-target--monster.is-dragging--monster.is-over:before {
+    content: 'Move Monster Here';
+}
+.encounter-builder-sidebar__suggested-monsters {
+    background: #f5f9fc;
+}
+.encounter-builder-sidebar__remove-drop-target {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 100%;
+    width: calc(100vw - 100%);
+    display: none;
+}
+.encounter-builder-sidebar__remove-drop-target--group.is-dragging--group {
+    display: block;
+}
+.encounter-builder-sidebar__remove-drop-target--monster.is-dragging--monster {
+    display: block;
+}
+.encounter-builder-sidebar__footer {
+    flex: none;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+}
+.encounter-builder-sidebar__save-button {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1b9af0;
+    border: none;
+    color: #fff;
+    flex-grow: 1;
+    height: 58px;
+
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.encounter-builder-sidebar__save-button-svg {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.5em;
+}
+
+.encounter-builder-difficulty-summary__flex-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.encounter-builder-difficulty-summary__xp-legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.encounter-builder-difficulty-summary__xp-legend .line-item {
+    justify-content: flex-end;
+    white-space: nowrap;
+}
+.encounter-builder-difficulty-summary__bat-difficulty {
+    text-align: center;
+    margin-top: 8px;
+}
+.encounter-builder-difficulty-summary__difficulty-bar {
+    display: block;
+    margin: 16px auto 0;
+    max-height: 20px;
+    max-width: 90%;
+}
+.encounter-builder-difficulty-summary .line-item {
+    align-items: flex-start;
+    font-size: 14px;
+    display: flex;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.encounter-builder-difficulty-summary .line-item--vertical {
+    flex-direction: column;
+}
+.encounter-builder-difficulty-summary .line-item__label {
+    color: #738694;
+}
+.encounter-builder-difficulty-summary .line-item__label {
+    margin-right: 0.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.encounter-builder-difficulty-summary .line-item__value {
+    font-weight: bold;
+    position: relative;
+}
+.encounter-builder-difficulty-summary .line-item__value .info-tooltip-button {
+    position: absolute !important;
+    left: 100%;
+    bottom: 100%;
+    transform: translate(10%, 80%);
+    background-color: transparent;
+    border-radius: 50%;
+    font-size: 0.85em;
+}
+.encounter-difficulty-xp-multiplier__table-heading {
+    margin: 8px 0;
+    text-align: center;
+}
+.encounter-difficulty-xp-multiplier__message {
+    margin-top: 16px;
+}
+.encounter-difficulty-xp-multiplier__citation {
+    margin-top: 16px;
+    display: block;
+}

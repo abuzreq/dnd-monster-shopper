@@ -1,0 +1,232 @@
+<div
+  class="metadata active encounter-builder__sidebar encounter-builder-sidebar"
+  role="region"
+  aria-labelledby="encounter-summary"
+>
+  <button class="encounter-builder-sidebar__open-button">
+    <svg viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M5.547 12.486L15 3l-2.76-3L0 12.486 12.24 25 15 22l-9.453-9.514z"
+      ></path>
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M18.547 12.486L28 3l-2.76-3L13 12.486 25.24 25 28 22l-9.453-9.514z"
+      ></path>
+    </svg>
+  </button>
+  <div class="encounter-builder-sidebar__header">
+    <h2 id="encounter-summary" class="encounter-builder-sidebar__header-text">
+      Encounter Summary
+    </h2>
+    <button class="encounter-builder-sidebar__close-button">
+      <svg
+        class=""
+        xmlns="http://www.w3.org/2000/svg"
+        width="100"
+        height="100"
+        viewBox="0 0 100 100"
+      >
+        <g transform="rotate(-45 50 50)">
+          <rect x="0" y="40" width="100" height="20"></rect>
+        </g>
+        <g transform="rotate(45 50 50)">
+          <rect x="0" y="40" width="100" height="20"></rect>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <div
+    class="encounter-builder-sidebar__summary encounter-builder-difficulty-summary"
+  >
+    <div class="encounter-builder-difficulty-summary__flex-wrapper">
+      <div class="encounter-builder-difficulty-summary__stats">
+        <div
+          class="encounter-builder-difficulty-summary__stat-difficulty line-item line-item--vertical"
+        >
+          <div class="line-item__label">Difficulty</div>
+          <div class="line-item__value">
+            <span class="difficulty-text difficulty-text--">None</span>
+          </div>
+        </div>
+        <div
+          class="encounter-builder-difficulty-summary__stat-total-xp line-item line-item--vertical"
+        >
+          <div class="line-item__label" title="Total Experience Points">
+            Total XP
+          </div>
+          <div class="line-item__value">0</div>
+        </div>
+        <div
+          class="encounter-builder-difficulty-summary__stat-adjusted-xp line-item line-item--vertical"
+        >
+          <div class="line-item__label" title="Adjusted Experience Points">
+            Adjusted XP
+          </div>
+          <div class="line-item__value">
+            0 XP
+            <span
+              class="encounter-builder-difficulty-summary__encounter-multiplier"
+              title="Encounter Multiplier"
+              >(x1)</span
+            >
+            <button
+              class="info-tooltip-button"
+              type="button"
+              aria-haspopup="true"
+              title="Why is there an XP multiplier?"
+            >
+              <svg
+                class="info-tooltip-svg"
+                viewBox="0 0 25 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.5 22C6.76 22 2.08 17.51 2.08 12S6.76 2 12.5 2s10.42 4.49 10.42 10-4.68 10-10.42 10zm0-22C5.6 0 0 5.38 0 12s5.6 12 12.5 12S25 18.62 25 12 19.4 0 12.5 0zm0 5a4.17 4.17 0 00-3.93 2.67c-.2.52.1 1.09.64 1.27.53.19 1.13-.09 1.32-.6.3-.8 1.09-1.34 1.97-1.34 1.15 0 2.08.9 2.08 2s-.93 2-2.08 2c-.58 0-1.04.45-1.04 1v2c0 .55.46 1 1.04 1 .58 0 1.04-.45 1.04-1v-1.13A4.04 4.04 0 0016.67 9c0-2.2-1.87-4-4.17-4zm0 11.99c-.58 0-1.05.45-1.05 1 0 .56.47 1.01 1.04 1.01.58 0 1.05-.45 1.05-1 0-.56-.47-1.01-1.05-1.01z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="encounter-builder-difficulty-summary__xp-legend">
+        <div class="line-item line-item--horizontal">
+          <div class="line-item__label">Easy:</div>
+          <div class="line-item__value">1000 XP</div>
+        </div>
+        <div class="line-item line-item--horizontal">
+          <div class="line-item__label">Medium:</div>
+          <div class="line-item__value">2000 XP</div>
+        </div>
+        <div class="line-item line-item--horizontal">
+          <div class="line-item__label">Hard:</div>
+          <div class="line-item__value">3000 XP</div>
+        </div>
+        <div class="line-item line-item--horizontal">
+          <div class="line-item__label">Deadly:</div>
+          <div class="line-item__value">4400 XP</div>
+        </div>
+        <div class="line-item line-item--horizontal">
+          <div class="line-item__label">Daily Budget:</div>
+          <div class="line-item__value">
+            14000 XP
+            <button
+              class="info-tooltip-button"
+              type="button"
+              aria-haspopup="true"
+              title="What is a daily budget?"
+            >
+              <svg
+                class="info-tooltip-svg"
+                viewBox="0 0 25 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.5 22C6.76 22 2.08 17.51 2.08 12S6.76 2 12.5 2s10.42 4.49 10.42 10-4.68 10-10.42 10zm0-22C5.6 0 0 5.38 0 12s5.6 12 12.5 12S25 18.62 25 12 19.4 0 12.5 0zm0 5a4.17 4.17 0 00-3.93 2.67c-.2.52.1 1.09.64 1.27.53.19 1.13-.09 1.32-.6.3-.8 1.09-1.34 1.97-1.34 1.15 0 2.08.9 2.08 2s-.93 2-2.08 2c-.58 0-1.04.45-1.04 1v2c0 .55.46 1 1.04 1 .58 0 1.04-.45 1.04-1v-1.13A4.04 4.04 0 0016.67 9c0-2.2-1.87-4-4.17-4zm0 11.99c-.58 0-1.05.45-1.05 1 0 .56.47 1.01 1.04 1.01.58 0 1.05-.45 1.05-1 0-.56-.47-1.01-1.05-1.01z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg
+      viewBox="0 -3 100 6"
+      class="difficulty-bar encounter-builder-difficulty-summary__difficulty-bar"
+      overflow="visible"
+    >
+      <defs>
+        <path id="value-lost-animation-path" d="M 0 0 L 0 9"></path>
+        <filter id="low-value-glow">
+          <feGaussianBlur in="StrokePaint" stdDeviation="1"></feGaussianBlur>
+        </filter>
+      </defs>
+      <line
+        class="difficulty-bar__background"
+        stroke-width="6"
+        stroke="#696D7A"
+        x1="0"
+        y1="0"
+        x2="100"
+        y2="0"
+      ></line>
+      <line
+        class="difficulty-bar__bar"
+        stroke-width="6"
+        stroke="#ced9e0"
+        x1="0"
+        y1="0"
+        x2="0"
+        y2="0"
+      ></line>
+      <line
+        class="difficulty-bar__lost-value"
+        stroke-width="6"
+        stroke="#d54f4f"
+        opacity="0"
+        x1="0"
+        y1="0"
+        x2="0"
+        y2="0"
+      >
+        <animate
+          attributeName="opacity"
+          from="1"
+          to="0"
+          dur="500ms"
+          begin="indefinite"
+          calcMode="spline"
+          keyTimes="0;1"
+          keySplines="0.755, 0.05, 0.855, 0.06"
+        ></animate>
+        <animateMotion
+          dur="500ms"
+          begin="indefinite"
+          calcMode="spline"
+          keyTimes="0;1"
+          keySplines="0.645, 0.045, 0.355, 1"
+        >
+          <mpath xlink:href="#value-lost-animation-path"></mpath>
+        </animateMotion>
+      </line>
+      <line
+        class="difficulty-bar__gained-value"
+        stroke-width="6"
+        stroke="#ced9e0"
+        stroke-dasharray="1000"
+        stroke-dashoffset="1000"
+        x1="0"
+        y1="0"
+        x2="0"
+        y2="0"
+      ></line>
+    </svg>
+  </div>
+  <div class="encounter-builder-sidebar__tabs">
+    <div
+      class="encounter-builder-sidebar__drop-target encounter-builder-sidebar__drop-target--monster drop-target"
+    ></div>
+    <div
+      class="encounter-builder-sidebar__drop-target encounter-builder-sidebar__drop-target--group drop-target"
+    ></div>
+  </div>
+  <div
+    class="encounter-builder-sidebar__remove-drop-target encounter-builder-sidebar__remove-drop-target--monster drop-target"
+  ></div>
+  <div
+    class="encounter-builder-sidebar__remove-drop-target encounter-builder-sidebar__remove-drop-target--group drop-target"
+  ></div>
+  <div class="encounter-builder-sidebar__footer">
+    <button class="encounter-builder-sidebar__save-button">
+      Save Encounter
+    </button>
+  </div>
+</div>

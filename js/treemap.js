@@ -55,7 +55,7 @@ var TreeMap = (function() {
     width = $svg.width();
     height = $svg.height();
 
-    var color = d3.scaleOrdinal(d3.schemeCategory10);
+    var color = d3.scaleOrdinal(d3.schemeTableau10);
     var format = d3.format(",d");
 
     var root = d3.hierarchy(data)
