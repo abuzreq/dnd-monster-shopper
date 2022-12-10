@@ -207,7 +207,7 @@ var PanZoom = (function () {
 
   PanZoom.prototype.onFilter = function () {
     if (filterData === undefined) return;
-
+    console.log(challengeFilterResults, subjectFilterResults)
     //const union = challengeFilterResults.map((x, i) => x && subjectFilterResults[i]);
     //selectedMonstersIndices = union.reduce((accum, val, index) => val?[index, ...accum]:accum, []);
     //$(document).trigger("selected.update", [challengeStart, challengeEnd]);
@@ -219,7 +219,7 @@ var PanZoom = (function () {
           g = 0,
           b = 0,
           a = 0;
-        if (challengeFilterResults[i] < 1 || subjectFilterResults[i] < 1) {
+        if ((challengeFilterResults[i] < 1) || (subjectFilterResults[i] < 1)) {
           a = 165;
         }
         filterData[i * 4] = r;
@@ -278,6 +278,7 @@ var PanZoom = (function () {
 
   PanZoom.prototype.onUpdateDomain = function (challengeStart, challengeEnd) {
     challengeFilterResults = new Array(opt.rows * opt.cols).fill(1);
+    console.log(challengeStart, challengeEnd)
     // only filter if total domain was changed
     if (challengeStart > minChallenge || challengeEnd < maxChallenge) {
       for (var i = 0; i < metadata.challenge.length; i++) {

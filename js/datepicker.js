@@ -236,17 +236,20 @@ var DatePicker = (function () {
   };
 
   DatePicker.prototype.onUIResizeOrDrag = function () {
+    
     var cw = $dcontainer.width();
     var w = $dwindow.width();
     var nw = w / cw;
     var x = parseFloat($dwindow.css("left"));
     var nx = x / cw;
-
+    var ne = (1 - (cw - w - x )/cw);
     var challengeStart =
-      uniqueChallengeValues[parseInt(nx * uniqueChallengeValues.length)].value;
+      uniqueChallengeValues[Math.floor(nx * uniqueChallengeValues.length)].value;
+    
     var challengeEnd =
-      uniqueChallengeValues[parseInt(nw * uniqueChallengeValues.length) - (nw === 1? 1: 0)].value;
-
+      uniqueChallengeValues[Math.min(Math.ceil(ne * (uniqueChallengeValues.length - 1)), uniqueChallengeValues.length - 1)].value; //- ((ne)  >= 1? 1: 0)
+      
+    console.log(challengeStart,challengeEnd, nw, nx, w, (1 - (cw - w - x - resizeHelperWidth)/cw) )
     $bgWest.width(Math.max(x - resizeHelperWidth, 0));
     $bgEast.width(Math.max(cw - w - x - resizeHelperWidth, 0));
 
