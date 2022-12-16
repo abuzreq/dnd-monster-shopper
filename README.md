@@ -1,5 +1,7 @@
-# Image Collection Visualizer
+# The Monster Shopper
+This fork is based on the work by the AMNH Science Visualization Group. I am adapting their approach to visualize Dungeons and Dragons monsters for ease of exploration and filtering. You can find a working build on https://dnd-monsters-atlas.netlify.app/#
 
+# Image Collection Visualizer
 Visualizing [AMNH](https://www.amnh.org/)'s [Photographic Collection](http://lbry-web-007.amnh.org/digital/collections/show/2) with machine learning and [Library](https://www.amnh.org/research/research-library) metadata.
 
 ## Requirements
